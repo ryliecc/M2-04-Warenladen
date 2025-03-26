@@ -7,10 +7,11 @@
 
 import Foundation
 
-// Aufgabe 1.1 Einleitung: Store Struct
+// Aufgabe 1.0 Einleitung: Store Struct
 
 struct Store {
-    // Aufgabe 1.2 Begrüßung
+    // Aufgabe 1.1 Begrüßung
+    // Aufgabe 1.2 Nutzernamen speichern
     
     var userName: String = ""
     
