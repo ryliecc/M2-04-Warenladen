@@ -10,7 +10,7 @@ import Foundation
 // Aufgabe 2.1 Produkt modellieren
 
 struct Product {
-    let name: String
-    let price: Double
-    let description: String
+    var name: String
+    var price: Double
+    var description: String
 }
