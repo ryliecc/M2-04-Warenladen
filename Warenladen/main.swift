@@ -2,4 +2,6 @@ import Foundation
 
 // Aufgabe 1.2 Begrüßung
 
-let store1: Store = Store.init()
+var store1: Store = Store()
+
+store1.greet()

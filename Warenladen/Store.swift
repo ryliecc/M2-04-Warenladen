@@ -14,7 +14,7 @@ struct Store {
     
     var userName: String = ""
     
-    init() {
+    mutating func greet() {
         print("Willkommen im Warenladen. Wie ist Ihr Name?")
         userName = readLine()!
         print("Herzlich Willkommen, \(userName)!")
