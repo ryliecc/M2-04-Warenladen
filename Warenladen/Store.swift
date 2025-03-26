@@ -10,5 +10,13 @@ import Foundation
 // Aufgabe 1.1 Einleitung: Store Struct
 
 struct Store {
+    // Aufgabe 1.2 Begrüßung
     
+    var userName: String = ""
+    
+    init() {
+        print("Willkommen im Warenladen. Wie ist Ihr Name?")
+        userName = readLine()!
+        print("Herzlich Willkommen, \(userName)!")
+    }
 }
