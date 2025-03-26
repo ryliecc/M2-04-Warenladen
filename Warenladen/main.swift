@@ -28,3 +28,8 @@ print("Produkte in store1 Instanz: \(store1.products)")
 
 store1.addProduct()
 print("Das neue Produkt ist: \(store1.products[10])")
+
+// Aufgabe 2.3 Produkt entfernen
+
+store1.removeProduct()
+print("Produkte in store1 Instanz: \(store1.products)")

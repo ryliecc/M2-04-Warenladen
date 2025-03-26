@@ -42,4 +42,20 @@ struct Store {
         product.description = readLine()!
         products.append(product)
     }
+    
+    mutating func removeProduct() {
+        print("Bitte gib die Nummer des Produkts an, das du entfernen willst, zB. 1 für das erste Produkt.")
+        var deleteIndex: Int? = Int(readLine()!)
+        while deleteIndex == nil {
+            print("Du hast keine ganze Zahl eingegeben. Bitte gib nur eine Ganzzahl ein.")
+            deleteIndex = Int(readLine()!)
+        }
+        deleteIndex! -= 1
+        if deleteIndex! < 0 || deleteIndex! >= products.count {
+            print("Produkt nicht gefunden.")
+        } else {
+            products.remove(at: deleteIndex!)
+        }
+        
+    }
 }
