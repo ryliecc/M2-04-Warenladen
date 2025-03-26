@@ -21,6 +21,18 @@ struct Store {
         print("Herzlich Willkommen, \(userName)!")
     }
     
+    // 1.3 Eingabe einer Ganzzahl
+    
+    func enterInteger() -> Int {
+        print("Bitte gib eine Ganzzahl ein.")
+        let input: Int? = Int(readLine()!)
+        if input == nil {
+            return 0
+        } else {
+            return input!
+        }
+    }
+    
     // Aufgabe 2.2 Produkte erstellen und hinzufügen
     
     var products: [Product] = []

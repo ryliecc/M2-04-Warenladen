@@ -10,6 +10,10 @@ store1.greet()
 
 print("Der Nutzername von Instanz store1 ist \(store1.userName).")
 
+// 1.3 Eingabe einer Ganzzahl
+
+print("Eingegebene Zahl: \(store1.enterInteger())")
+
 // Aufgabe 2.2 Produkte erstellen und hinzufügen
 
 let product1: Product = Product(name: "Nintendo 2DS", price: 99.99, description: "Handheld console from Nintendo that works just like the famous 3DS, just without the 3D feature.")
