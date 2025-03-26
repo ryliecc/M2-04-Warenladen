@@ -58,4 +58,8 @@ struct Store {
         }
         
     }
+    
+    // Aufgabe 3.1 Artikelnummern
+    
+    var productNumbersWithProduct: [Int: Product] = [:]
 }

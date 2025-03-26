@@ -33,3 +33,9 @@ print("Das neue Produkt ist: \(store1.products[10])")
 
 store1.removeProduct()
 print("Produkte in store1 Instanz: \(store1.products)")
+
+// Aufgabe 3.1 Artikelnummern
+
+store1.productNumbersWithProduct = [1 : product1, 2 : product2, 3 : product3, 4 : product4, 5 : product5, 6 : product6, 7 : product7, 8 : product8, 9 : product9, 10 : product10]
+
+print("Das Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
