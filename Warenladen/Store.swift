@@ -62,4 +62,21 @@ struct Store {
     // Aufgabe 3.1 Artikelnummern
     
     var productNumbersWithProduct: [Int: Product] = [:]
+    
+    // Aufgabe 3.2 Produkte abfragen
+    
+    func searchProductByProductNumber() {
+        print("Bitte gib die Artikelnummer des gewünschten Produkts ein.")
+        var productNumber: Int? = Int(readLine()!)
+        while productNumber == nil {
+            print("Ungültige Eingabe. Bitte versuch es erneut.")
+            productNumber = Int(readLine()!)
+        }
+        let searchedProduct: Product? = productNumbersWithProduct[productNumber!]
+        if searchedProduct == nil {
+            print("Produkt nicht gefunden.")
+        } else {
+            print("Das gesuchte Produkt ist \(searchedProduct!)")
+        }
+    }
 }
