@@ -38,8 +38,15 @@ print("Produkte in store1 Instanz: \(store1.products)")
 
 store1.productNumbersWithProduct = [1 : product1, 2 : product2, 3 : product3, 4 : product4, 5 : product5, 6 : product6, 7 : product7, 8 : product8, 9 : product9, 10 : product10]
 
-print("Das Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
+print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
 
 // Aufgabe 3.2 Produkte abfragen
 
 store1.searchProductByProductNumber()
+
+// Aufgabe 3.3 Produkt registrieren
+
+let product11: Product = Product(name: "240 GB SD Card", price: 19.99, description: "An SD Card to store all your favorite games")
+
+store1.registerProduct(product: product11)
+print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")

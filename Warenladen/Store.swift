@@ -79,4 +79,14 @@ struct Store {
             print("Das gesuchte Produkt ist \(searchedProduct!)")
         }
     }
+    
+    // Aufgabe 3.3 Produkt registrieren
+    
+    mutating func registerProduct(product: Product) {
+        var productNumber: Int = Int.random(in: 1...1000)
+        while productNumbersWithProduct[productNumber] != nil {
+            productNumber = Int.random(in: 1...1000)
+        }
+        productNumbersWithProduct[productNumber] = product
+    }
 }
