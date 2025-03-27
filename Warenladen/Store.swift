@@ -124,4 +124,17 @@ struct Store {
         }
         productNumbersWithProduct[productNumber] = product
     }
+    
+    // Aufgabe 3.4 Barcode
+    
+    func encrypt(_ number: Int) -> String {
+        let stringNumber: String = String(number)
+        let code: String = stringNumber.replacing("0", with: " ").replacing("1", with: "▏").replacing("2", with: "▎").replacing("3", with: "▍").replacing("4", with: "▌").replacing("5", with: "▋").replacing("6", with: "▊").replacing("7", with: "▉").replacing("8", with: "█").replacing("9", with: "▐")
+        return code
+    }
+    
+    func decrypt(_ barcode: String) -> Int {
+        let decodedString: String = barcode.replacing(" ", with: "0").replacing("▏", with: "1").replacing("▎", with: "2").replacing("▍", with: "3").replacing("▌", with: "4").replacing("▋", with: "5").replacing("▊", with: "6").replacing("▉", with: "7").replacing("█", with: "8").replacing("▐", with: "9")
+        return Int(decodedString)!
+    }
 }

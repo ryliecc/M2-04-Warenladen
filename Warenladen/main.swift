@@ -68,3 +68,8 @@ let product11: Product = Product(name: "240 GB SD Card", price: 19.99, descripti
 
 store1.registerProduct(product: product11)
 print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
+
+// Aufgabe 3.4 Barcode
+
+print("Barcode von 324435523: \(store1.encrypt(324435523))")
+print("Zahl von Barcode ▍▎▌▌▍▋▋▎▍: \(store1.decrypt("▍▎▌▌▍▋▋▎▍"))")
