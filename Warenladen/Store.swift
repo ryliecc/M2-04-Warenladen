@@ -91,6 +91,13 @@ struct Store {
         print("Top Marken: \(sortedBrands)")
     }
     
+    // Aufgabe 2.5 Nach Preis sortieren
+    
+    func showProductsSortedByPrice() {
+        let sortedProducts: [Product] = products.sorted {$0.price < $1.price}
+        print("Nach Preis sortierte Produkte: \(sortedProducts)")
+    }
+    
     // Aufgabe 3.1 Artikelnummern
     
     var productNumbersWithProduct: [Int: Product] = [:]
