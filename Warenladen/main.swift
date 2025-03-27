@@ -33,7 +33,7 @@ let product10: Product = Product(name: "XBox Controller", price: 24.99, descript
 
 store1.loadProducts(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10)
     // Aufgabe 4.1 Produkte ausgeben
-print("Produkte in store1 Instanz: \(store1.printProducts())")
+store1.printProducts()
 
 store1.addProduct()
 print("Das neue Produkt ist: \(store1.products[10])")
@@ -41,7 +41,7 @@ print("Das neue Produkt ist: \(store1.products[10])")
 // Aufgabe 2.3 Produkt entfernen
 
 store1.removeProduct()
-print("Produkte in store1 Instanz: \(store1.printProducts())")
+store1.printProducts()
 
 // Aufgabe 2.4 Top Marken
 
@@ -56,8 +56,8 @@ store1.showProductsSortedByPrice()
 // Aufgabe 3.1 Artikelnummern
 
 store1.productNumbersWithProduct = [1 : product1, 2 : product2, 3 : product3, 4 : product4, 5 : product5, 6 : product6, 7 : product7, 8 : product8, 9 : product9, 10 : product10]
-
-print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
+        // Aufgabe 4.2 Artikelnummern ausgeben
+store1.printProductsWithProductNumber()
 
 // Aufgabe 3.2 Produkte abfragen
 
@@ -68,7 +68,7 @@ print(String(describing:store1.searchProductByProductNumber()))
 let product11: Product = Product(name: "240 GB SD Card", price: 19.99, description: "An SD Card to store all your favorite games")
 
 store1.registerProduct(product: product11)
-print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbersWithProduct)")
+store1.printProductsWithProductNumber()
 
 // Aufgabe 3.4 Barcode
 

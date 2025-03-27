@@ -160,4 +160,12 @@ struct Store {
             print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
         }
     }
+    
+    // Aufgabe 4.2 Artikelnummern ausgeben
+    
+    func printProductsWithProductNumber() {
+        for productNumber in productNumbersWithProduct {
+            print("ℹ️ \(productNumber.key) \(productNumber.value.name)")
+        }
+    }
 }
