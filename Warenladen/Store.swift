@@ -33,6 +33,19 @@ struct Store {
         }
     }
     
+    // Aufgabe 1.4 Ja/Nein Eingabe
+    
+    func validation() -> Bool {
+        print("Bitte bestätigen Sie: (ja/nein)")
+        var input: String = readLine()!
+        while input.lowercased() != "nein" && input.lowercased() != "ja" {
+            print("Falsche Eingabe.")
+            print("Bitte bestätigen Sie: (ja/nein)")
+            input = readLine()!
+        }
+        return input.lowercased() == "ja"
+    }
+    
     // Aufgabe 2.2 Produkte erstellen und hinzufügen
     
     var products: [Product] = []

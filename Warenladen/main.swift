@@ -14,6 +14,10 @@ print("Der Nutzername von Instanz store1 ist \(store1.userName).")
 
 print("Eingegebene Zahl: \(store1.enterInteger())")
 
+// Aufgabe 1.4 Ja/Nein Eingabe
+
+print("Bestätigung: \(store1.validation())")
+
 // Aufgabe 2.2 Produkte erstellen und hinzufügen
 
 let product1: Product = Product(name: "Nintendo 2DS", price: 99.99, description: "Handheld console from Nintendo that works just like the famous 3DS, just without the 3D feature.")
