@@ -9,7 +9,7 @@ import Foundation
 
 // Aufgabe 2.1 Produkt modellieren
 
-struct Product {
+struct Product: Hashable {
     var name: String
     var price: Double
     var description: String

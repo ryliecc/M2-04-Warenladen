@@ -104,7 +104,7 @@ struct Store {
     
     // Aufgabe 3.2 Produkte abfragen
     
-    func searchProductByProductNumber() {
+    func searchProductByProductNumber() -> Product? {
         print("Bitte gib die Artikelnummer des gewünschten Produkts ein.")
         let productNumber: Int = enterInteger()
         let searchedProduct: Product? = productNumbersWithProduct[productNumber]
@@ -113,6 +113,7 @@ struct Store {
         } else {
             print("Das gesuchte Produkt ist \(searchedProduct!)")
         }
+        return searchedProduct
     }
     
     // Aufgabe 3.3 Produkt registrieren
@@ -136,5 +137,19 @@ struct Store {
     func decrypt(_ barcode: String) -> Int {
         let decodedString: String = barcode.replacing(" ", with: "0").replacing("▏", with: "1").replacing("▎", with: "2").replacing("▍", with: "3").replacing("▌", with: "4").replacing("▋", with: "5").replacing("▊", with: "6").replacing("▉", with: "7").replacing("█", with: "8").replacing("▐", with: "9")
         return Int(decodedString)!
+    }
+    
+    // Aufgabe 3.5 Warenkorb
+    
+    var shoppingCart: [Product:Int] = [:]
+    
+    mutating func putProductInShoppingCart() {
+        print("Welches Produkt möchten Sie kaufen?")
+        let product: Product? = searchProductByProductNumber()
+        if product != nil {
+            print("Wieviele Produkte möchten Sie kaufen?")
+            let amount: Int = enterInteger()
+            shoppingCart[product!] = amount
+        }
     }
 }

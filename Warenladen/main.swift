@@ -60,7 +60,7 @@ print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbe
 
 // Aufgabe 3.2 Produkte abfragen
 
-store1.searchProductByProductNumber()
+print(store1.searchProductByProductNumber())
 
 // Aufgabe 3.3 Produkt registrieren
 
@@ -73,3 +73,8 @@ print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbe
 
 print("Barcode von 324435523: \(store1.encrypt(324435523))")
 print("Zahl von Barcode ▍▎▌▌▍▋▋▎▍: \(store1.decrypt("▍▎▌▌▍▋▋▎▍"))")
+
+// Aufgabe 3.5 Warenkorb
+
+store1.putProductInShoppingCart()
+print("Der aktuelle Warenkorb: \(store1.shoppingCart)")
