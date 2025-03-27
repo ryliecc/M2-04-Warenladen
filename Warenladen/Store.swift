@@ -88,7 +88,7 @@ struct Store {
     
     func searchProductByProductNumber() {
         print("Bitte gib die Artikelnummer des gewünschten Produkts ein.")
-        var productNumber: Int = enterInteger()
+        let productNumber: Int = enterInteger()
         let searchedProduct: Product? = productNumbersWithProduct[productNumber]
         if searchedProduct == nil {
             print("Produkt nicht gefunden.")
