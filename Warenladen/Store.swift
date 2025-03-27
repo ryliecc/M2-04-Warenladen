@@ -23,7 +23,7 @@ struct Store {
     
     // 1.3 Eingabe einer Ganzzahl
     
-    func enterInteger() -> Int {
+    private func enterInteger() -> Int {
         print("Bitte gib eine Ganzzahl ein.")
         let input: Int? = Int(readLine()!)
         if input == nil {
@@ -35,7 +35,7 @@ struct Store {
     
     // Aufgabe 1.4 Ja/Nein Eingabe
     
-    func validation() -> Bool {
+    private func validation() -> Bool {
         print("Bitte bestätigen Sie: (ja/nein)")
         var input: String = readLine()!
         while input.lowercased() != "nein" && input.lowercased() != "ja" {
