@@ -32,7 +32,8 @@ let product9: Product = Product(name: "Howl's Movong Castle DVD", price: 11.89, 
 let product10: Product = Product(name: "XBox Controller", price: 24.99, description: "A controller for the XBox Console that also works with Windows PCs.")
 
 store1.loadProducts(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10)
-print("Produkte in store1 Instanz: \(store1.products)")
+    // Aufgabe 4.1 Produkte ausgeben
+print("Produkte in store1 Instanz: \(store1.printProducts())")
 
 store1.addProduct()
 print("Das neue Produkt ist: \(store1.products[10])")
@@ -40,7 +41,7 @@ print("Das neue Produkt ist: \(store1.products[10])")
 // Aufgabe 2.3 Produkt entfernen
 
 store1.removeProduct()
-print("Produkte in store1 Instanz: \(store1.products)")
+print("Produkte in store1 Instanz: \(store1.printProducts())")
 
 // Aufgabe 2.4 Top Marken
 

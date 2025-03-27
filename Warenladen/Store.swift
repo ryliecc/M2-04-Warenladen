@@ -152,4 +152,12 @@ struct Store {
             shoppingCart[product!] = amount
         }
     }
+    
+    // Aufgabe 4.1 Produkte ausgeben
+    
+    func printProducts() {
+        for product in products {
+            print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
+        }
+    }
 }
