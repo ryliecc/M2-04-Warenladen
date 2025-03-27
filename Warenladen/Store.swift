@@ -65,7 +65,10 @@ struct Store {
         }
         print("Bitte gib eine kurze Produktbeschreibung ein.")
         product.description = readLine()!
-        products.append(product)
+        print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nSoll dieses Produkt wirklich der Produktliste hinzugefügt werden?")
+        if validation() {
+            products.append(product)
+        }
     }
     
     // Aufgabe 2.3 Produkt entfernen
@@ -76,7 +79,7 @@ struct Store {
         deleteIndex -= 1
         if deleteIndex < 0 || deleteIndex >= products.count {
             print("Produkt nicht gefunden.")
-        } else {
+        } else if validation() {
             products.remove(at: deleteIndex)
         }
         
@@ -95,7 +98,10 @@ struct Store {
     
     func showProductsSortedByPrice() {
         let sortedProducts: [Product] = products.sorted {$0.price < $1.price}
-        print("Nach Preis sortierte Produkte: \(sortedProducts)")
+        print("Nach Preis sortierte Produkte:")
+        for product in sortedProducts {
+            print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
+        }
     }
     
     // Aufgabe 3.1 Artikelnummern
@@ -111,7 +117,7 @@ struct Store {
         if searchedProduct == nil {
             print("Produkt nicht gefunden.")
         } else {
-            print("Das gesuchte Produkt ist \(searchedProduct!)")
+            print("Das gesuchte Produkt ist \(searchedProduct!.name)")
         }
         return searchedProduct
     }
@@ -149,7 +155,10 @@ struct Store {
         if product != nil {
             print("Wieviele Produkte möchten Sie kaufen?")
             let amount: Int = enterInteger()
-            shoppingCart[product!] = amount
+            print("Sind Sie sicher, dass Sie \(amount)x \(product!.name) in den Warenkorb legen möchten?")
+            if validation() {
+                shoppingCart[product!] = amount
+            }
         }
     }
     

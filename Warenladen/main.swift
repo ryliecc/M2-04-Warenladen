@@ -7,16 +7,13 @@ var store1: Store = Store()
 store1.greet()
 
 // Aufgabe 1.2 Nutzernamen speichern
-
-print("Der Nutzername von Instanz store1 ist \(store1.userName).")
+// Test erfolgreich, siehe erweiterete Methode .greet()
 
 // 1.3 Eingabe einer Ganzzahl
-
-print("Eingegebene Zahl: \(store1.enterInteger())")
+// Test erfolgreich, wurde in entsprechenden Methoden integriert
 
 // Aufgabe 1.4 Ja/Nein Eingabe
-
-print("Bestätigung: \(store1.validation())")
+// Test erfolgreich, wurde in entsprechenden Methoden integriert
 
 // Aufgabe 2.2 Produkte erstellen und hinzufügen
 
@@ -36,7 +33,7 @@ store1.loadProducts(product1, product2, product3, product4, product5, product6, 
 store1.printProducts()
 
 store1.addProduct()
-print("Das neue Produkt ist: \(store1.products[10])")
+store1.printProducts()
 
 // Aufgabe 2.3 Produkt entfernen
 
