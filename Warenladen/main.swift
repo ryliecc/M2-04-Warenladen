@@ -60,7 +60,7 @@ print("Die Liste der Produktnummern in Instanz store1 ist: \(store1.productNumbe
 
 // Aufgabe 3.2 Produkte abfragen
 
-print(store1.searchProductByProductNumber())
+print(String(describing:store1.searchProductByProductNumber()))
 
 // Aufgabe 3.3 Produkt registrieren
 
