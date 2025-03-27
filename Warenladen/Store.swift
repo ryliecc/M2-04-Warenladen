@@ -10,13 +10,16 @@ import Foundation
 // Aufgabe 1.0 Einleitung: Store Struct
 
 struct Store {
+    // Zusatz weil ich so schönere Printausgaben bauen kann.
+    var name: String
+    
     // Aufgabe 1.1 Begrüßung
     // Aufgabe 1.2 Nutzernamen speichern
     
     var userName: String = ""
     
     mutating func greet() {
-        print("Willkommen im Warenladen. Wie ist Ihr Name?")
+        print("Willkommen im Laden '\(name)'. Wie ist Ihr Name?")
         userName = readLine()!
         print("Herzlich Willkommen, \(userName)!")
     }
@@ -65,7 +68,7 @@ struct Store {
         }
         print("Bitte gib eine kurze Produktbeschreibung ein.")
         product.description = readLine()!
-        print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nSoll dieses Produkt wirklich der Produktliste hinzugefügt werden?")
+        print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nSoll dieses Produkt wirklich der Produktliste von \(name) hinzugefügt werden?")
         if validation() {
             products.append(product)
         }
@@ -74,7 +77,7 @@ struct Store {
     // Aufgabe 2.3 Produkt entfernen
     
     mutating func removeProduct() {
-        print("Bitte gib die Nummer des Produkts an, das du entfernen willst, zB. 1 für das erste Produkt.")
+        print("Bitte gib die Nummer des Produkts an, das du aus der Produktliste von \(name) entfernen willst.")
         var deleteIndex: Int = enterInteger()
         deleteIndex -= 1
         if deleteIndex < 0 || deleteIndex >= products.count {
@@ -98,7 +101,7 @@ struct Store {
     
     func showProductsSortedByPrice() {
         let sortedProducts: [Product] = products.sorted {$0.price < $1.price}
-        print("Nach Preis sortierte Produkte:")
+        print("Nach Preis sortierte Produkte von \(name):")
         for product in sortedProducts {
             print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
         }
@@ -111,7 +114,7 @@ struct Store {
     // Aufgabe 3.2 Produkte abfragen
     
     func searchProductByProductNumber() -> Product? {
-        print("Bitte gib die Artikelnummer des gewünschten Produkts ein.")
+        print("Bitte gib die Artikelnummer des gewünschten Produkts aus der Produktliste von \(name) ein.")
         let productNumber: Int = enterInteger()
         let searchedProduct: Product? = productNumbersWithProduct[productNumber]
         if searchedProduct == nil {
@@ -125,9 +128,9 @@ struct Store {
     // Aufgabe 3.3 Produkt registrieren
     
     mutating func registerProduct(product: Product) {
-        var productNumber: Int = Int.random(in: 1...1000)
+        var productNumber: Int = Int.random(in: 1...99999)
         while productNumbersWithProduct[productNumber] != nil {
-            productNumber = Int.random(in: 1...1000)
+            productNumber = Int.random(in: 1...99999)
         }
         productNumbersWithProduct[productNumber] = product
     }
@@ -165,6 +168,7 @@ struct Store {
     // Aufgabe 4.1 Produkte ausgeben
     
     func printProducts() {
+        print("Produktliste des Ladens \(name)")
         for product in products {
             print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
         }
@@ -173,6 +177,7 @@ struct Store {
     // Aufgabe 4.2 Artikelnummern ausgeben
     
     func printProductsWithProductNumber() {
+        print("Artikelnummerliste des Ladens \(name)")
         for productNumber in productNumbersWithProduct {
             print("ℹ️ \(productNumber.key) \(productNumber.value.name)")
         }

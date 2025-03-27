@@ -2,7 +2,7 @@ import Foundation
 
 // Aufgabe 1.1 Begrüßung
 
-var store1: Store = Store()
+var store1: Store = Store(name: "Game Paradise")
 
 store1.greet()
 
@@ -52,7 +52,9 @@ store1.showProductsSortedByPrice()
 
 // Aufgabe 3.1 Artikelnummern
 
-store1.productNumbersWithProduct = [1 : product1, 2 : product2, 3 : product3, 4 : product4, 5 : product5, 6 : product6, 7 : product7, 8 : product8, 9 : product9, 10 : product10]
+for product in store1.products {
+    store1.registerProduct(product: product)
+}
         // Aufgabe 4.2 Artikelnummern ausgeben
 store1.printProductsWithProductNumber()
 
@@ -61,11 +63,7 @@ store1.printProductsWithProductNumber()
 print(String(describing:store1.searchProductByProductNumber()))
 
 // Aufgabe 3.3 Produkt registrieren
-
-let product11: Product = Product(name: "240 GB SD Card", price: 19.99, description: "An SD Card to store all your favorite games")
-
-store1.registerProduct(product: product11)
-store1.printProductsWithProductNumber()
+// Test erfolgreich, in Test für 3.1 integriert
 
 // Aufgabe 3.4 Barcode
 
@@ -75,4 +73,7 @@ print("Zahl von Barcode ▍▎▌▌▍▋▋▎▍: \(store1.decrypt("▍▎▌
 // Aufgabe 3.5 Warenkorb
 
 store1.putProductInShoppingCart()
-print("Der aktuelle Warenkorb: \(store1.shoppingCart)")
+print("Der aktuelle Warenkorb von \(store1.userName):")
+for product in store1.shoppingCart {
+    print("\(product.value)x \(product.key.name)\nGesamtpreis: \(product.key.price * Double(product.value))€")
+}
