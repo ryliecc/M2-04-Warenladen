@@ -68,6 +68,8 @@ struct Store {
         products.append(product)
     }
     
+    // Aufgabe 2.3 Produkt entfernen
+    
     mutating func removeProduct() {
         print("Bitte gib die Nummer des Produkts an, das du entfernen willst, zB. 1 für das erste Produkt.")
         var deleteIndex: Int = enterInteger()
