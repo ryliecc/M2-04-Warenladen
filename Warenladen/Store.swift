@@ -206,4 +206,14 @@ struct Store {
         }
         print("Der Gesamtwert im Lager von \(name) liegt bei \(String(format: "%.2f", totalValue))€")
     }
+    
+    // Aufgabe 4.5 Checkout
+    
+    func checkout() {
+        var totalValue: Double = 0
+        for product in shoppingCart {
+            totalValue += product.key.price * Double(product.value)
+        }
+        print("Der Gesamtpreis aller Artikel im Warenkorb beträgt \(String(format: "%.2f", totalValue))€.")
+    }
 }

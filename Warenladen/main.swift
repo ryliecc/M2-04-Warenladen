@@ -85,3 +85,7 @@ store1.printProcutsWithRange()
 // Aufgabe 4.4 Gesamtwert berechnen
 
 store1.calculateTotalValue()
+
+// Aufgabe 4.5 Checkout
+
+store1.checkout()
