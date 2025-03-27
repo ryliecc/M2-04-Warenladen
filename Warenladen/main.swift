@@ -77,3 +77,6 @@ print("Der aktuelle Warenkorb von \(store1.userName):")
 for product in store1.shoppingCart {
     print("\(product.value)x \(product.key.name)\nGesamtpreis: \(product.key.price * Double(product.value))€")
 }
+
+// Aufgabe 4.3 Range an Produkten ausgeben
+store1.printProcutsWithRange()

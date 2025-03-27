@@ -27,7 +27,6 @@ struct Store {
     // 1.3 Eingabe einer Ganzzahl
     
     private func enterInteger() -> Int {
-        print("Bitte gib eine Ganzzahl ein.")
         let input: Int? = Int(readLine()!)
         if input == nil {
             return 0
@@ -180,6 +179,21 @@ struct Store {
         print("Artikelnummerliste des Ladens \(name)")
         for productNumber in productNumbersWithProduct {
             print("ℹ️ \(productNumber.key) \(productNumber.value.name)")
+        }
+    }
+    
+    // Aufgabe 4.3 Range an Produkten ausgeben
+    
+    func printProcutsWithRange() {
+        print("Bitte geben Sie den Bereich an, den Sie erhalten möchten, beginnend bei 1.")
+        print("Alle Produkte AB:")
+        let indexStart: Int = enterInteger() - 1
+        print("Alle Produkte BIS:")
+        let indexEnd: Int = enterInteger() - 1
+        for (index, product) in products.enumerated() {
+            if index >= indexStart && index <= indexEnd {
+                print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
+            }
         }
     }
 }
