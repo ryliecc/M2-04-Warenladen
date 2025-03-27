@@ -82,6 +82,15 @@ struct Store {
         
     }
     
+    // Aufgabe 2.4 Top Marken
+    
+    var brands: [String] = []
+    
+    func showTopBrands() {
+        let sortedBrands: [String] = brands.sorted()
+        print("Top Marken: \(sortedBrands)")
+    }
+    
     // Aufgabe 3.1 Artikelnummern
     
     var productNumbersWithProduct: [Int: Product] = [:]

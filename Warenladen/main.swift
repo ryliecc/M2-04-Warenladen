@@ -42,6 +42,12 @@ print("Das neue Produkt ist: \(store1.products[10])")
 store1.removeProduct()
 print("Produkte in store1 Instanz: \(store1.products)")
 
+// Aufgabe 2.4 Top Marken
+
+store1.brands = ["Nintendo", "Xbox", "SanDisk", "Electronic Arts", "Studio Ghibli"]
+
+store1.showTopBrands()
+
 // Aufgabe 3.1 Artikelnummern
 
 store1.productNumbersWithProduct = [1 : product1, 2 : product2, 3 : product3, 4 : product4, 5 : product5, 6 : product6, 7 : product7, 8 : product8, 9 : product9, 10 : product10]
