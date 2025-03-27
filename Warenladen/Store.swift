@@ -196,4 +196,14 @@ struct Store {
             }
         }
     }
+    
+    // Aufgabe 4.4 Gesamtwert berechnen
+    
+    func calculateTotalValue() {
+        var totalValue: Double = 0
+        for product in products {
+            totalValue += product.price
+        }
+        print("Der Gesamtwert im Lager von \(name) liegt bei \(String(format: "%.2f", totalValue))€")
+    }
 }

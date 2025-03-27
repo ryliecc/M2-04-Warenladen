@@ -79,4 +79,9 @@ for product in store1.shoppingCart {
 }
 
 // Aufgabe 4.3 Range an Produkten ausgeben
+
 store1.printProcutsWithRange()
+
+// Aufgabe 4.4 Gesamtwert berechnen
+
+store1.calculateTotalValue()
