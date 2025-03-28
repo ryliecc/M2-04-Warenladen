@@ -17,7 +17,7 @@ store1.greet()
 
 // Aufgabe 2.2 Produkte erstellen und hinzufügen
 
-let product1: Product = Product(name: "Nintendo 2DS", price: 99.99, description: "Handheld console from Nintendo that works just like the famous 3DS, just without the 3D feature.")
+var product1: Product = Product(name: "Nintendo 2DS", price: 99.99, description: "Handheld console from Nintendo that works just like the famous 3DS, just without the 3D feature.")
 let product2: Product = Product(name: "Mario Kart 8", price: 34.99, description: "Mario Kart for the Switch!")
 let product3: Product = Product(name: "The Sims 25th Anniversary Bundle", price: 30.00, description: "Includes The Sims and The Sims 2 with all add-ons.")
 let product4: Product = Product(name: "The Sims 4: Parenthood", price: 39.99, description: "A Sims 4 Gameplay Pack that focuses on the joys of parenthood.")
@@ -89,3 +89,10 @@ store1.calculateTotalValue()
 // Aufgabe 4.5 Checkout
 
 store1.checkout()
+
+// Aufgabe 5.1 Produkt Bewertungen
+
+product1.addRating(userName: store1.userName)
+product1.addRating(userName: "Anonymous")
+product1.addRating(userName: "RandomUser123")
+print("Die durschnittliche Bewertung von \(product1.name) ist \(String(format: "%.1f", product1.calculateAverageRating())) Sterne")

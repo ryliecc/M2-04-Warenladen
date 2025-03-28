@@ -169,7 +169,8 @@ struct Store {
     func printProducts() {
         print("Produktliste des Ladens \(name)")
         for product in products {
-            print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€")
+            let averageRating: Double = product.calculateAverageRating()
+            print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
         }
     }
     
