@@ -96,3 +96,10 @@ product1.addRating(userName: store1.userName)
 product1.addRating(userName: "Anonymous")
 product1.addRating(userName: "RandomUser123")
 print("Die durschnittliche Bewertung von \(product1.name) ist \(String(format: "%.1f", product1.calculateAverageRating())) Sterne")
+
+// Aufgabe 5.2 Filter
+// 3 Aufrufe zum Testen aller 3 Filter :)
+
+store1.filterProducts()
+store1.filterProducts()
+store1.filterProducts()

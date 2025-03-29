@@ -217,4 +217,49 @@ struct Store {
         }
         print("Der Gesamtpreis aller Artikel im Warenkorb beträgt \(String(format: "%.2f", totalValue))€.")
     }
+    
+    // Aufgabe 5.2
+    
+    func filterProducts() {
+        print("Folgende Filter sind verfügbar:\n1 - Nach Preis filtern\n2 - Nach Bewertung filtern\n3 - Nach Namen filtern\nBitte geben Sie die Zahl des gewünschten Filters ein:")
+        var chosenFilter: Int = enterInteger()
+        while chosenFilter <= 0 || chosenFilter >= 4 {
+            print("Falsche Eingabe. Bitte versuchen Sie es erneut.")
+            chosenFilter = enterInteger()
+        }
+        if chosenFilter == 1 {
+            print("Bitte geben Sie einen Maximalpreis in ganzen Euro ein.")
+            let maxPrice: Int = enterInteger()
+            for product in products {
+                if product.price <= Double(maxPrice) {
+                    let averageRating: Double = product.calculateAverageRating()
+                    print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
+                }
+            }
+        }
+        if chosenFilter == 2 {
+            print("Bitte geben Sie eine Mindestanzahl an Sternen (1-5) ein.")
+            var minStars: Int = enterInteger()
+            while minStars <= 0 || minStars >= 6 {
+                print("Falsche Eingabe. Bitte versuchen Sie es erneut.")
+                minStars = enterInteger()
+            }
+            for product in products {
+                let averageRating: Double = product.calculateAverageRating()
+                if Double(minStars) <= averageRating {
+                    print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
+                }
+            }
+        }
+        if chosenFilter == 3 {
+            print("Bitte geben Sie den Namen oder Teil des Namens der gesuchten Artikel ein.")
+            let filterText: String = readLine()!
+            for product in products {
+                if product.name.contains(filterText) {
+                    let averageRating: Double = product.calculateAverageRating()
+                    print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
+                }
+            }
+        }
+    }
 }
