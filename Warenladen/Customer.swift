@@ -15,4 +15,12 @@ struct Customer {
     var age: Int
     var adress: String
     var balance: Double
+    
+    mutating func addBalance() {
+        print("Wieviel Guthaben möchten Sie hinzufügen?")
+        let input: Double? = Double(readLine()!)
+        if input != nil {
+            balance += input!
+        }
+    }
 }

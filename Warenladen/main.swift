@@ -17,11 +17,11 @@ var customer1: Customer = Customer(name: "isabelleFan13", password: "iNeed99Bell
 var customer2: Customer = Customer(name: "nookLover22", password: "TomNookIsRich!", age: 35, adress: "Inselstraße 7, 12345 Nooktown", balance: 1050.75)
 var customer3: Customer = Customer(name: "kappnRider", password: "BoatTrip4Life", age: 42, adress: "Hafenweg 12, 56789 Schildkrötenbucht", balance: 259.30)
 
-// Aufgabe 1.1 Begrüßung
-
 var store1: Store = Store(name: "Game Paradise", customers: [customer1, customer2, customer3])
 
-store1.greet()
+// Aufgabe 1.1 Begrüßung
+
+//store1.greet()
 
 // Aufgabe 1.2 Nutzernamen speichern
 // Test erfolgreich, siehe erweiterete Methode .greet()
@@ -37,25 +37,25 @@ store1.greet()
 
 store1.loadProducts(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10)
     // Aufgabe 4.1 Produkte ausgeben
-store1.printProducts()
-
-store1.addProduct()
-store1.printProducts()
+//store1.printProducts()
+//
+//store1.addProduct()
+//store1.printProducts()
 
 // Aufgabe 2.3 Produkt entfernen
 
-store1.removeProduct()
-store1.printProducts()
+//store1.removeProduct()
+//store1.printProducts()
 
 // Aufgabe 2.4 Top Marken
 
 store1.brands = ["Nintendo", "Xbox", "SanDisk", "Electronic Arts", "Studio Ghibli"]
 
-store1.showTopBrands()
+//store1.showTopBrands()
 
 // Aufgabe 2.5 Nach Preis sortieren
 
-store1.showProductsSortedByPrice()
+//store1.showProductsSortedByPrice()
 
 // Aufgabe 3.1 Artikelnummern
 
@@ -63,50 +63,54 @@ for product in store1.products {
     store1.registerProduct(product: product)
 }
         // Aufgabe 4.2 Artikelnummern ausgeben
-store1.printProductsWithProductNumber()
+//store1.printProductsWithProductNumber()
 
 // Aufgabe 3.2 Produkte abfragen
 
-print(String(describing:store1.searchProductByProductNumber()))
+//print(String(describing:store1.searchProductByProductNumber()))
 
 // Aufgabe 3.3 Produkt registrieren
 // Test erfolgreich, in Test für 3.1 integriert
 
 // Aufgabe 3.4 Barcode
 
-print("Barcode von 324435523: \(store1.encrypt(324435523))")
-print("Zahl von Barcode ▍▎▌▌▍▋▋▎▍: \(store1.decrypt("▍▎▌▌▍▋▋▎▍"))")
+//print("Barcode von 324435523: \(store1.encrypt(324435523))")
+//print("Zahl von Barcode ▍▎▌▌▍▋▋▎▍: \(store1.decrypt("▍▎▌▌▍▋▋▎▍"))")
 
 // Aufgabe 3.5 Warenkorb
 
-store1.putProductInShoppingCart()
-print("Der aktuelle Warenkorb von \(store1.currentUser):")
-for product in store1.shoppingCart {
-    print("\(product.value)x \(product.key.name)\nGesamtpreis: \(product.key.price * Double(product.value))€")
-}
+//store1.putProductInShoppingCart()
+//print("Der aktuelle Warenkorb von \(store1.currentUser):")
+//for product in store1.shoppingCart {
+//    print("\(product.value)x \(product.key.name)\nGesamtpreis: \(product.key.price * Double(product.value))€")
+//}
 
 // Aufgabe 4.3 Range an Produkten ausgeben
 
-store1.printProcutsWithRange()
+//store1.printProcutsWithRange()
 
 // Aufgabe 4.4 Gesamtwert berechnen
 
-store1.calculateTotalValue()
+//store1.calculateTotalValue()
 
 // Aufgabe 4.5 Checkout
 
-store1.checkout()
+//store1.checkout()
 
 // Aufgabe 5.1 Produkt Bewertungen
 
-product1.addRating(userName: store1.currentUser)
-product1.addRating(userName: "Anonymous")
-product1.addRating(userName: "RandomUser123")
-print("Die durschnittliche Bewertung von \(product1.name) ist \(String(format: "%.1f", product1.calculateAverageRating())) Sterne")
+//product1.addRating(userName: store1.currentUser)
+//product1.addRating(userName: "Anonymous")
+//product1.addRating(userName: "RandomUser123")
+//print("Die durschnittliche Bewertung von \(product1.name) ist \(String(format: "%.1f", product1.calculateAverageRating())) Sterne")
 
 // Aufgabe 5.2 Filter
 // 3 Aufrufe zum Testen aller 3 Filter :)
 
-store1.filterProducts()
-store1.filterProducts()
-store1.filterProducts()
+//store1.filterProducts()
+//store1.filterProducts()
+//store1.filterProducts()
+
+// Aufgabe 5.3 Konsolenprogramm
+
+store1.run()

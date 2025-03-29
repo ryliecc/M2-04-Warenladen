@@ -184,8 +184,10 @@ struct Store {
     func printProductsWithProductNumber() {
         print("Artikelnummerliste des Ladens \(name)")
         for productNumber in productNumbersWithProduct {
-            print("ℹ️ \(productNumber.key) \(productNumber.value.name)")
+            let averageRating: Double = productNumber.value.calculateAverageRating()
+            print("----------\n\(productNumber.key)\n\(encrypt(productNumber.key))\n\(productNumber.value.name): \(productNumber.value.description)\nPreis: \(String(format: "%.2f", productNumber.value.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
         }
+        print("----------")
     }
     
     // Aufgabe 4.3 Range an Produkten ausgeben
@@ -215,15 +217,28 @@ struct Store {
     
     // Aufgabe 4.5 Checkout
     
-    func checkout() {
+    mutating func checkout() {
         var totalValue: Double = 0
+        let customerIndex = customers.firstIndex(where: { $0.name == currentUser })
+        let currentCustomer = customers[customerIndex!]
         for product in shoppingCart {
             totalValue += product.key.price * Double(product.value)
         }
         print("Der Gesamtpreis aller Artikel im Warenkorb beträgt \(String(format: "%.2f", totalValue))€.")
+        if currentCustomer.balance < totalValue {
+            print("Ihr Guthaben reicht nicht aus. Sie werden nun zum Hauptmenü zurück geleitet.")
+        } else {
+            customers[customerIndex!].balance -= totalValue
+            shoppingCart = [:]
+            print("Der Einkauf war erfolgreich.")
+            print("Möchten Sie Ihren Einkauf fortsetzen? Falls nicht werden Sie nun ausgeloggt.")
+            if !validation() {
+                currentUser = ""
+            }
+        }
     }
     
-    // Aufgabe 5.2
+    // Aufgabe 5.2 Filter
     
     func filterProducts() {
         print("Folgende Filter sind verfügbar:\n1 - Nach Preis filtern\n2 - Nach Bewertung filtern\n3 - Nach Namen filtern\nBitte geben Sie die Zahl des gewünschten Filters ein:")
@@ -307,6 +322,162 @@ struct Store {
             print("Falsches Passwort. Bitte versuchen Sie es erneut.")
             input = readLine()!
             isPasswordCorrect = input == customer.password
+        }
+    }
+    
+    // Aufgabe 5.3 Konsolenprogramm
+    
+    private func chooseNextMove() -> Int {
+        print("--- Hauptmenü ---")
+        print("Bitte wählen Sie einen der folgenden Navigationspunkte:")
+        print("1 - Alle Artikel ansehen")
+        print("2 - Artikel in Warenkorb legen")
+        print("3 - Warenkorb ansehen")
+        print("4 - Guthaben abfragen und aufladen")
+        print("5 - Logout")
+        var input: Int = enterInteger()
+        while input == 0 || input >= 6 {
+            print("Falsche Eingabe. Bitte versuchen Sie es erneut.")
+            input = enterInteger()
+        }
+        return input
+    }
+    
+    func printShoppingCart() {
+        print("----------\nWarenkorb:")
+        if shoppingCart.isEmpty {
+            print("Noch keine Artikel im Warenkorb.")
+        } else {
+            for product in shoppingCart {
+                let productNumberEntry = productNumbersWithProduct.first(where: { $0.value == product.key})
+                print("-----\n\(product.value)x \(product.key.name)\nArtikelnummer: \(productNumberEntry!.key)\nEinzelpreis: \(String(format: "%.2f", product.key.price))€")
+            }
+            print("-----")
+        }
+    }
+    
+    mutating func deleteProductFromShoppingCart() {
+        print("Geben Sie die Artikelnummer des Produkts ein, das Sie aus dem Warenkorb entfernen möchten.")
+        let input = enterInteger()
+        if let deletedProduct = productNumbersWithProduct[input] {
+            print("Sind Sie sicher, dass Sie \(deletedProduct.name) aus Ihrem Warenkorb entfernen möchten?")
+            if validation() {
+                shoppingCart.removeValue(forKey: deletedProduct)
+            }
+        } else {
+            print("Produkt nicht gefunden.")
+        }
+    }
+    
+    mutating func changeAmountInShoppingCart() {
+        print("Geben Sie die Artikelnummer des Produkts ein, dessen Menge Sie ändern möchten.")
+        let input = enterInteger()
+        if let changingProduct = productNumbersWithProduct[input] {
+            print("Welche Menge soll im Warenkorb gespeichert werden?")
+            let newAmount: Int = enterInteger()
+            if newAmount == 0 {
+                print("Sind Sie sicher, dass Sie \(changingProduct.name) aus Ihrem Warenkorb entfernen möchten?")
+                if validation() {
+                    shoppingCart.removeValue(forKey: changingProduct)
+                }
+            } else {
+                shoppingCart[changingProduct] = newAmount
+            }
+        }
+    }
+    
+    private func chooseNextShoppingCartMove() -> Int {
+        print("--- Warenkorb Menü ---")
+        print("Bitte wählen Sie einen der folgenden Navigationspunkte:")
+        print("1 - Artikel aus Warenkorb entfernen")
+        print("2 - Menge eines Artikels im Warenkorb ändern")
+        print("3 - Zur Kasse gehen")
+        print("4 - Zurück zum Hauptmenü")
+        var input: Int = enterInteger()
+        while input == 0 || input >= 5 {
+            print("Falsche Eingabe. Bitte versuchen Sie es erneut.")
+            input = enterInteger()
+        }
+        return input
+    }
+    
+    mutating func run() {
+        greet()
+        while currentUser != "" {
+            let customerIndex = customers.firstIndex(where: { $0.name == currentUser })
+            let choice: Int = chooseNextMove()
+            if choice == 1 {
+                printProductsWithProductNumber()
+                print("Möchten Sie die Liste filtern?")
+                if validation() {
+                    filterProducts()
+                }
+            }
+            if choice == 2 {
+                putProductInShoppingCart()
+                print("Möchten Sie ein weiteres Produkt in den Warenkorb legen?")
+                while validation() {
+                    putProductInShoppingCart()
+                    print("Möchten Sie ein weiteres Produkt in den Warenkorb legen?")
+                }
+            }
+            if choice == 3 {
+                printShoppingCart()
+                let shoppingCartChoice: Int = chooseNextShoppingCartMove()
+                if shoppingCartChoice == 1 {
+                    if shoppingCart.isEmpty {
+                        print("Ihr Warenkorb ist bereits leer.")
+                    } else {
+                        deleteProductFromShoppingCart()
+                        if !shoppingCart.isEmpty {
+                            print("Möchten Sie einen weiteren Artikel aus dem Warenkorb löschen?")
+                        }
+                        while !shoppingCart.isEmpty && validation() {
+                            deleteProductFromShoppingCart()
+                            if !shoppingCart.isEmpty {
+                                print("Möchten Sie einen weiteren Artikel aus dem Warenkorb löschen?")
+                            }
+                        }
+                    }
+                }
+                if shoppingCartChoice == 2 {
+                    if shoppingCart.isEmpty {
+                        print("Ihr Einkaufswagen ist leer. Es kann keine Menge geändert werden.")
+                    } else {
+                        changeAmountInShoppingCart()
+                        if !shoppingCart.isEmpty {
+                            print("Möchten Sie die Menge eines weiteren Artikels aus dem Warenkorb ändern?")
+                        }
+                        while !shoppingCart.isEmpty && validation() {
+                            changeAmountInShoppingCart()
+                            if !shoppingCart.isEmpty {
+                                print("Möchten Sie die Menge eines weiteren Artikels aus dem Warenkorb ändern?")
+                            }
+                        }
+                    }
+                }
+                if shoppingCartChoice == 3 {
+                    if shoppingCart.isEmpty {
+                        print("Ihr Warenkorb ist leer. Sie können nicht zur Kasse gehen.")
+                    } else {
+                        checkout()
+                    }
+                }
+            }
+            if choice == 4 {
+                print("Ihr momentanes Guthaben beträgt \(customers[customerIndex!].balance)€")
+                print("Möchten Sie Ihr Guthaben aufladen?")
+                if validation() {
+                    customers[customerIndex!].addBalance()
+                }
+            }
+            if choice == 5 {
+                print("Sind Sie sicher, dass Sie sich ausloggen wollen? Ihr momentaner Einkaufswagen geht dann verloren.")
+                if validation() {
+                    shoppingCart = [:]
+                    currentUser = ""
+                }
+            }
         }
     }
 }
