@@ -21,12 +21,12 @@ struct Store {
     mutating func greet() {
         print("Willkommen im Laden '\(name)'. Wie ist Ihr Username?")
         currentUser = readLine()!
-        print("Herzlich Willkommen, \(currentUser)!")
         if let currentCustomer = customers.first(where: { $0.name == currentUser }) {
             checkPassword(currentCustomer)
         } else {
             createNewUser()
         }
+        print("Herzlich Willkommen, \(currentUser)!")
     }
     
     // 1.3 Eingabe einer Ganzzahl
