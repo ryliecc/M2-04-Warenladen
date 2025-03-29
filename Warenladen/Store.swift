@@ -16,12 +16,17 @@ struct Store {
     // Aufgabe 1.1 Begrüßung
     // Aufgabe 1.2 Nutzernamen speichern
     
-    var userName: String = ""
+    var currentUser: String = ""
     
     mutating func greet() {
-        print("Willkommen im Laden '\(name)'. Wie ist Ihr Name?")
-        userName = readLine()!
-        print("Herzlich Willkommen, \(userName)!")
+        print("Willkommen im Laden '\(name)'. Wie ist Ihr Username?")
+        currentUser = readLine()!
+        print("Herzlich Willkommen, \(currentUser)!")
+        if let currentCustomer = customers.first(where: { $0.name == currentUser }) {
+            checkPassword(currentCustomer)
+        } else {
+            createNewUser()
+        }
     }
     
     // 1.3 Eingabe einer Ganzzahl
@@ -260,6 +265,48 @@ struct Store {
                     print("\(product.name): \(product.description)\nPreis: \(String(format: "%.2f", product.price))€\nBewertung: \(averageRating > 0 ? String(format: "%.1f", averageRating) + " Sterne" : "Noch keine Bewertungen")")
                 }
             }
+        }
+    }
+    
+    // Aufgabe 5.4 Kunden Struct
+    
+    var customers: [Customer]
+    
+    mutating func createNewUser() {
+        print("Willkommen zum Registrierungsprozess.")
+        print("Bitte geben Sie Ihr gewünschtes Passwort ein.")
+        let password: String = readLine()!
+        print("Bitte geben Sie Ihr Alter ein.")
+        var age: Int
+        let input: Int? = Int(readLine()!)
+        if input == nil {
+            age = 0
+        } else {
+            age = input!
+        }
+        print("Bitte geben Sie Ihre Adresse ein.")
+        let adress: String = readLine()!
+        let bonusNumber: Int = Int.random(in: 1...5)
+        var balance: Double = 0
+        if bonusNumber == 3 || bonusNumber == 4 {
+        print("Herzlichen Glückwunsch. Sie haben ein gratis Startguthaben von 10€ gewonnen.")
+            balance = 10
+        } else if bonusNumber == 5 {
+        print("Herzlichen Glückwunsch. Sie haben ein gratis Startguthaben von 30€ gewonnen.")
+            balance = 30
+        }
+        let newCustomer: Customer = Customer(name: currentUser, password: password, age: age, adress: adress, balance: balance)
+        customers.append(newCustomer)
+    }
+    
+    private func checkPassword(_ customer: Customer) {
+        print("Bitte geben Sie Ihr Password ein.")
+        var input: String = readLine()!
+        var isPasswordCorrect: Bool = input == customer.password
+        while !isPasswordCorrect {
+            print("Falsches Passwort. Bitte versuchen Sie es erneut.")
+            input = readLine()!
+            isPasswordCorrect = input == customer.password
         }
     }
 }
