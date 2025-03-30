@@ -46,7 +46,7 @@ Warenladen/
 **DE:**
 1. Repository klonen:
    ```sh
-   git clone https://github.com/deinusername/freizeitpark.git
+   git clone https://github.com/ryliecc/M2-04-Warenladen.git
    ```
 2. Das Projekt in **Xcode** öffnen.
 3. Auf den **Play-Button** in Xcode klicken, um das Programm auszuführen.
@@ -54,7 +54,7 @@ Warenladen/
 **EN:**
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/freizeitpark.git
+   git clone https://github.com/ryliecc/M2-04-Warenladen.git
    ```
 2. Open the project in **Xcode**.
 3. Click the **Play button** in Xcode to run the program.
